@@ -85,8 +85,12 @@ button {
   background-color: pink;
   align-items: center;
   color: var(--color-white);
-  padding: 16px;
   flex-wrap: wrap;
+  position: sticky;
+  padding: 0 20px;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
 
 a {
@@ -116,6 +120,9 @@ ul {
 .navbar__logo {
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
+}
+.navbar__logo > a {
+  font-family: "Times New Roman", Times, serif;
 }
 
 .navbar__menu__item.active {
@@ -335,4 +342,47 @@ ul {
 }
 .project__description h3 {
   color: var(--color-white);
+}
+
+/* Award */
+#award {
+  background-color: #b3aeae;
+}
+.award__title > p {
+  font-style: italic;
+  text-align: left;
+  font-weight: bold;
+}
+.award__content > p {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  text-align: right;
+}
+
+.award__content > p > a {
+  color: rgb(226, 117, 135);
+}
+.award__img {
+  width: 100%;
+}
+
+/* Contact */
+#contact {
+  background-color: #f4d4d4;
+}
+.contact__email > a {
+  color: var(--color-dark-grey);
+}
+.contact__links {
+  margin: 24px 0;
+}
+.contact__links a > i {
+  color: black;
+  font-size: 48px;
+  margin: 0 16px;
+  transition: all var(--animation-duration) ease-in;
+}
+.contact__links a > i:hover {
+  transform: scale(1.2);
 }
