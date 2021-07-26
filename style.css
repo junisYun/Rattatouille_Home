@@ -98,6 +98,10 @@ button {
 #navbar.navbar--dark {
   background-color: #7fa3b3;
 }
+#navbar.navbar--wheelDown {
+  display: none;
+  background-color: transparent;
+}
 a {
   text-decoration: none;
   color: var(--color-white);
