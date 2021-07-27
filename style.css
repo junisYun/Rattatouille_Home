@@ -430,7 +430,7 @@ img.about__avatar {
 /* media */
 @media screen and (max-width: 768px) {
   #home {
-    height: 400px;
+    height: 350px;
   }
   .navbar__toggleBtn {
     display: block;

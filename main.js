@@ -19,7 +19,11 @@ navbarMenu.addEventListener('click', (event) => {
         return;
     }
     const scrollTo = document.querySelector(link);
-    scrollTo.scrollIntoView();
+    scrollTo.scrollIntoView(
+        {
+            behavior: 'smooth'
+        }
+    );
 });
 
 // handle scrolling when tapping Contact button
@@ -28,12 +32,12 @@ query.addEventListener('click', () => {
     const scrollTo = document.querySelector('#contact');
     scrollTo.scrollIntoView(
         {
-            behavior: "smooth"
+            behavior: 'smooth'
         }
     );
 })
 
-// wheel test
+// disappear navbar when wheel go up 
 let cnt = 0;
 document.querySelector('body').addEventListener('wheel', (event) => {
     // if (event.deltaY < 0 && window.scrollY > 100) {
@@ -55,5 +59,11 @@ document.querySelector('body').addEventListener('wheel', (event) => {
     } else {
         navbar.classList.remove('navbar--wheelDown');
     }
-    console.log(cnt);
+})
+
+
+const home = document.querySelector('#home');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+    home.style.opacity = `${1 - window.scrollY / homeHeight}`;
 })
