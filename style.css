@@ -116,15 +116,18 @@ ul {
   display: flex;
   flex-wrap: wrap;
 }
+
 .navbar__menu__item {
   padding: 8px 12px;
   margin: 0 4px;
   cursor: pointer;
   border-radius: var(--size-border-radius);
+  border: 1px solid transparent;
   transition: all 0.3s ease-in;
 }
 .navbar__menu__item:hover {
   background-color: var(--color-dark-pink);
+  border: 1px solid white;
 }
 .navbar__logo {
   font-size: var(--font-medium);
@@ -134,10 +137,6 @@ ul {
 }
 .navbar__logo > a {
   font-family: "Times New Roman", Times, serif;
-}
-
-.navbar__menu__item.active {
-  border: 1px solid white;
 }
 
 .navbar__toggleBtn {
@@ -156,7 +155,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background: url("/image/background.png") center/cover no-repeat;
+  background: url("/image/background_comp.png") center/cover no-repeat;
   padding: 40px;
   text-align: center;
   height: 760px;
@@ -379,6 +378,7 @@ img.about__avatar {
   top: 0;
   left: 0;
   background-color: black;
+  color: var(--color-white);
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -386,7 +386,7 @@ img.about__avatar {
   transition: all var(--animation-duration) ease-in;
 }
 .project__description h3 {
-  color: var(--color-white);
+  color: yellow;
 }
 
 /* Award */
@@ -470,11 +470,29 @@ img.about__avatar {
   #navbar {
     flex-direction: column;
     padding-bottom: 15px;
+    background-color: #7fa3b3;
   }
   .navbar__menu {
     flex-direction: column;
     align-items: center;
+
     display: none;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: all var(--animation-duration) ease-in;
+  }
+  .navbar__menu.open {
+    display: block;
+    opacity: 1;
+  }
+
+  .home__contact {
+    width: 120px;
+    height: 50px;
+    font-size: 16px;
+    position: relative;
+    bottom: -30px;
   }
   .major {
     margin-bottom: 30px;
@@ -493,12 +511,12 @@ img.about__avatar {
     top: 1px;
   }
   .sideNav {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
   .sideNav i {
-    font-size: 5px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 50px;
   }
 }
 @media screen and (max-width: 1000px) and (min-width: 769px) {

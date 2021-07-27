@@ -24,6 +24,7 @@ navbarMenu.addEventListener('click', (event) => {
             behavior: 'smooth'
         }
     );
+    navbarMenu.classList.remove('open');
 });
 
 // handle scrolling when tapping Contact button
@@ -55,6 +56,7 @@ const wheelEvent = (event) => {
     }
     if (cnt < 5) {
         navbar.classList.add('navbar--wheelDown');
+        navbarMenu.classList.remove('open');
     } else {
         navbar.classList.remove('navbar--wheelDown');
     }
@@ -81,7 +83,7 @@ document.addEventListener('scroll', () => {
 // adjust opacity of home background when scroll down
 const home = document.querySelector('#home');
 const homeHeight = home.getBoundingClientRect().height;
-document.addEventListener('scroll', () => {
+document.addEventListener('scroll', (e) => {
     home.style.opacity = `${1 - window.scrollY / homeHeight}`;
 })
 
@@ -103,6 +105,13 @@ workBtnContainer.addEventListener('click', (e) => {
     if (filter === undefined) return;
     workProjectContainer.classList.add('animation-out');
 
+    console.log(e.target.parentNode);
+    const active = document.querySelector('.category__btn.active');
+    active.classList.remove('active');
+    const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('active');
+
+
     setTimeout(() => {
         projects.forEach((project) => {
             if (filter === 'all' || filter === project.dataset.category) {
@@ -113,6 +122,37 @@ workBtnContainer.addEventListener('click', (e) => {
         })
         workProjectContainer.classList.remove('animation-out');
     }, 300);
-
 })
 
+// const aboutmeHeight = document.getElementById('about').offsetTop - 1;
+// const skillsHeight = document.getElementById('skills').offsetTop - 1;
+// const workHeight = document.getElementById('work').offsetTop - 1;
+// const awardHeight = document.getElementById('award').offsetTop - 1;
+// document.addEventListener('scroll', () => {
+//     document.querySelector('.navbar__menu__item.home').classList.remove('active');
+//     if (scrollY > aboutmeHeight && aboutmeHeight < skillsHeight) {
+//         document.querySelector('.navbar__menu__item.about').classList.add('active');
+//     } else {
+//         document.querySelector('.navbar__menu__item.about').classList.remove('active');
+//     }
+//     if (scrollY > skillsHeight && skillsHeight < workHeight) {
+//         document.querySelector('.navbar__menu__item.skills').classList.add('active');
+//     } else {
+//         document.querySelector('.navbar__menu__item.skills').classList.remove('active');
+//     }
+//     if (scrollY > workHeight && workHeight < awardHeight) {
+//         document.querySelector('.navbar__menu__item.work').classList.add('active');
+//     } else {
+//         document.querySelector('.navbar__menu__item.work').classList.remove('active');
+//     }
+//     if (scrollY > awardHeight) {
+//         document.querySelector('.navbar__menu__item.award').classList.add('active');
+//     } else {
+//         document.querySelector('.navbar__menu__item.award').classList.remove('active');
+//     }
+// });
+const navbartoggle = document.querySelector('.navbar__toggleBtn');
+navbartoggle.addEventListener('click', (e) => {
+    navbarMenu.classList.toggle('open');
+    console.log(e.target);
+})
