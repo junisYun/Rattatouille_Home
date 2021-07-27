@@ -41,9 +41,9 @@ query.addEventListener('click', () => {
 let cnt = 0;
 const body = document.querySelector('body');
 body.addEventListener('wheel', (event) => {
-    wheelEvent();
+    wheelEvent(event);
 })
-const wheelEvent = () => {
+const wheelEvent = (event) => {
     if (window.scrollY < 100) {
         navbar.classList.remove('navbar--wheelDown');
         return;
@@ -60,15 +60,14 @@ const wheelEvent = () => {
     }
 }
 
+// go to top when click the sideNav
 const sideNav = document.querySelector('.sideNav');
 sideNav.addEventListener('click', () => {
-    const scrollTo = document.getElementById('home');
-    scrollTo.scrollIntoView(
-        {
-            behavior: "smooth"
-        }
-    )
+    scrollIntoView('#home');
 })
+
+
+// show sideNav 
 document.addEventListener('scroll', () => {
     if (window.scrollY > 687) {
         sideNav.style.opacity = 1;
@@ -84,5 +83,36 @@ const home = document.querySelector('#home');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     home.style.opacity = `${1 - window.scrollY / homeHeight}`;
+})
+
+// scrollTo custom function
+const scrollIntoView = (selector) => {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView(
+        {
+            behavior: "smooth"
+        }
+    );
+}
+
+const workBtnContainer = document.querySelector('.work__categories');
+const workProjectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workBtnContainer.addEventListener('click', (e) => {
+    const filter = e.target.dataset.category || e.target.parentNode.dataset.category;
+    if (filter === undefined) return;
+    workProjectContainer.classList.add('animation-out');
+
+    setTimeout(() => {
+        projects.forEach((project) => {
+            if (filter === 'all' || filter === project.dataset.category) {
+                project.classList.remove('invisible');
+            } else {
+                project.classList.add('invisible');
+            }
+        })
+        workProjectContainer.classList.remove('animation-out');
+    }, 300);
+
 })
 
