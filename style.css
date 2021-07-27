@@ -99,7 +99,7 @@ button {
   background-color: #7fa3b3;
 }
 #navbar.navbar--wheelDown {
-  display: none;
+  top: -70px;
   background-color: transparent;
 }
 a {
@@ -426,6 +426,30 @@ img.about__avatar {
 .contact__links a > i:hover {
   transform: scale(1.2);
 }
+.sideNav {
+  width: 70px;
+  height: 70px;
+  background-color: #7fa3b3;
+  border-radius: 50%;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+.sideNav:hover {
+  background-color: #8ca9b6;
+  transform: scale(1.05);
+}
+.sideNav:active {
+  background-color: #79a4b8;
+}
+.sideNav i {
+  line-height: 70px;
+  font-size: 35px;
+  color: white;
+}
 
 /* media */
 @media screen and (max-width: 768px) {
@@ -459,6 +483,14 @@ img.about__avatar {
   .navbar__logo {
     position: relative;
     top: 1px;
+  }
+  .sideNav {
+    width: 30px;
+    height: 30px;
+  }
+  .sideNav i {
+    font-size: 5px;
+    line-height: 30px;
   }
 }
 @media screen and (max-width: 1000px) and (min-width: 769px) {

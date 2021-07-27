@@ -39,12 +39,11 @@ query.addEventListener('click', () => {
 
 // disappear navbar when wheel go up 
 let cnt = 0;
-document.querySelector('body').addEventListener('wheel', (event) => {
-    // if (event.deltaY < 0 && window.scrollY > 100) {
-    //     navbar.classList.add('navbar--wheelDown');
-    // } else {
-    //     navbar.classList.remove('navbar--wheelDown');
-    // }
+const body = document.querySelector('body');
+body.addEventListener('wheel', (event) => {
+    wheelEvent();
+})
+const wheelEvent = () => {
     if (window.scrollY < 100) {
         navbar.classList.remove('navbar--wheelDown');
         return;
@@ -54,16 +53,36 @@ document.querySelector('body').addEventListener('wheel', (event) => {
     } else {
         cnt = 0;
     }
-    if (cnt > 5) {
+    if (cnt < 5) {
         navbar.classList.add('navbar--wheelDown');
     } else {
         navbar.classList.remove('navbar--wheelDown');
     }
+}
+
+const sideNav = document.querySelector('.sideNav');
+sideNav.addEventListener('click', () => {
+    const scrollTo = document.getElementById('home');
+    scrollTo.scrollIntoView(
+        {
+            behavior: "smooth"
+        }
+    )
+})
+document.addEventListener('scroll', () => {
+    if (window.scrollY > 687) {
+        sideNav.style.opacity = 1;
+        sideNav.style.pointerEvents = "auto";
+    } else {
+        sideNav.style.opacity = 0;
+        sideNav.style.pointerEvents = "none";
+    }
 })
 
-
+// adjust opacity of home background when scroll down
 const home = document.querySelector('#home');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     home.style.opacity = `${1 - window.scrollY / homeHeight}`;
 })
+
