@@ -155,7 +155,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background: url("/image/background_comp.png") center/cover no-repeat;
+  background: url("/image/background/background_comp.png") center/cover
+    no-repeat;
   padding: 40px;
   text-align: center;
   height: 760px;
